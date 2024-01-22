@@ -61,10 +61,7 @@ class PasswordGenerator
         save_to_file(password) if gets.chomp.downcase == 'y'
 
         puts "Obrigado por usar o gerador de senhas!"
-
     end
-
 end
-
 
 PasswordGenerator.new.start_cli
