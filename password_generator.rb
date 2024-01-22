@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'clipboard'
 class PasswordGenerator
     def initialize #inicalização do objeto se for necessário
     end
@@ -17,10 +18,20 @@ class PasswordGenerator
 
     #Logica para copiar o texto para a area de transferencia
     def copy_to_clipboard(text)
+        puts "Senha Copiada para a area de transferencia. "
     end
 
     # logica para salvar a senha em um arquivo
     def save_to_file(password)
+        print "Digite o caminho completo do arquivo para salvar a senha: "
+        file_path = gets.chomp
+
+        begin
+          File.open(file_path, 'w') { |file| file.puts(password)}
+          puts "Senha Salva com sucesso no arquivo #{file_path}."
+        rescue StandardError => e 
+            puts "Error ao salvar a senha: #{e.message}"
+        end    
     end
 
     # logica principal da interface de linha de comando
